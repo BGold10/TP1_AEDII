@@ -1,0 +1,171 @@
+\documentclass[10pt,a4paper]{article}
+
+\input{AEDmacros}
+\usepackage{caratula} % Version modificada para usar las macros de algo1 de ~> https://github.com/bcardiff/dc-tex
+
+
+\titulo{Trabajo Práctico 1}
+\subtitulo{Especificación y correctitud}
+
+\fecha{\today}
+
+\materia{Algoritmos y Estructuras de Datos/AED II}
+\grupo{Grupo 42}
+
+\integrante{Castello, Ulises}{0224/24}{ulisescastello9@gmail.com}
+\integrante{Corral, Nicolás}{0343/23}{n.corral.j@gmail.com}
+\integrante{Goldfarb, Bruno}{1164/23}{bgoldfarb2003@gmail.com}
+\integrante{Apellido, Nombre4}{004/01}{email4@dominio.com}
+% Pongan cuantos integrantes quieran
+
+% Declaramos donde van a estar las figuras
+% No es obligatorio, pero suele ser comodo
+\graphicspath{{../static/}}
+
+\begin{document}
+
+\maketitle
+
+\section{Especificación}
+\subsection{Encontrando el camino}
+
+
+\begin{questions}
+
+    \question 1) grandesCiudades: A partir de una lista de ciudades, devuelve aquellas que tienen más de 50.000 habitantes. \\ \\
+Solución:    \\
+    \begin{solution}
+        Proc  grandesCiudades (in: ciudades: seq$\langle ciudad \rangle$): seq$\langle ciudad \rangle \lbrace$ \\ 
+        Requiere: $\lbrace ciudad.habitantes \geq 0 \rbrace $\\
+        $Asegura: \lbrace((\forall i; \mathbb{Z})(0 \leq i  < \mid ciudades \mid)) \rightarrow _L (ciudades[i] \in res) \leftrightarrow (ciudades[i].habitantes \geq 50000) \wedge _L $ \\ $\wedge _L(\forall R1;\langle ciudad \rangle) (R1, \in res)  \rightarrow((R1 \in  ciudades) \wedge (R1.habitantes \geq 50000))\rbrace \\ \rbrace$
+    \end{solution}
+    \\\\\\
+    \question  2) sumaDeHabitantes: Por cuestiones de planificación urbana, las ciudades registran sus habitantes mayores de edad por un lado y menores de edad por el otro. Dadas dos listas de ciudades del mismo largo con los mismos nombres, una con sus habitantes mayores y otra con sus habitantes menores, este procedimiento debe devolver una lista de ciudades con la cantidad total de sus habitantes. \\ 
+    \begin{solution}
+    solución: \\
+        proc sumaDeHabitantes (in: menoresDeCiudades: seq⟨Ciudad⟩, in mayoresDeCiudades: seq⟨Ciudad⟩) : seq⟨Ciudad⟩ $\lbrace$ \\
+        Requiere: $\lbrace \mid menores \mid$ = $\mid mayores \mid  \wedge _L mismasCiudades(menores,mayores) \rbrace$ \\
+        Asegura: $\lbrace (\forall ciudad; \langle ciudades \rangle)(ciudad \in res) \rightarrow (\exists i,j; \mathbb{Z})(0  \geq (i,j) \geq \mid menores \mid) \wedge _L (ciudades.nombres = \\ = menores [i].nombres = mayores[i].nombres) \wedge (ciudades.habitantes = menores [i].habitantes + mayores[i].habitantes) $
+        $\\ \rbrace$
+        pred mismasCiudades(T1: ⟨Ciudad⟩, T2: ⟨Ciudad⟩) $ \lbrace$  \\
+        $ (\forall i; \mathbb{Z}) (0 \leq i  < \mid T1 \mid)) \rightarrow _L (T1[i] \in  T2) \wedge (\forall j; \mathbb{Z}) (0 \leq j  < \mid T2 \mid)) \rightarrow _L (T2[i] \in  T1) $ 
+    \end{solution}
+\end{questions}
+
+Lo principal: las fórmulas. Se puede poner en una linea, como $x_i = x_{i-1} + x_{i-2}$, o ponerse más grande:
+
+\begin{equation}
+	\sum\limits_{i=0}^{n} i
+	\label{eq:1}
+\end{equation}
+
+Y se pueden citar ecuaciones con \eqref{f}|: \eqref{eq:1}
+
+Ejemplo de itemizado:
+
+\begin{itemize}
+	\item Item 1
+	\item Item 2
+	\item Item 3
+\end{itemize}
+
+Ejemplo de enumerado con menor distancia entre items:
+
+\begin{enumerate} \setlength\itemsep{0cm}
+	\item Item 1
+	\item Item 2
+	\item Item 3
+\end{enumerate}
+
+Podemos escribir mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto. Mucho texto.
+
+Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo. Otro párrafo.
+
+\vspace{0.3cm}
+
+Le agregamos una separación entre párrafos. Le agregamos una separación entre párrafos. Le agregamos una separación entre párrafos. Le agregamos una separación entre párrafos. Le agregamos una separación entre párrafos.
+
+\vspace{0.3cm}
+
+La tabla \ref{tab:ejemplo} es un ejemplo de cómo se hace una tabla.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{||l c c r||} 
+		\hline
+		Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+		\hline\hline
+		1 & 6 & 87837 & 787 \\ 
+		2 & 7 & 78 & 5415 \\
+		3 & 545 & 778 & 7507 \\
+		4 & 545 & 18744 & 7560 \\
+		5 & 88 & 788 & 6344 \\
+		\hline
+	\end{tabular}
+	\caption{Ejemplo de tabla}
+	\label{tab:ejemplo}
+\end{table}
+
+
+La figura \ref{fig:subfigs} es un ejemplo de cómo se agrega una imagen.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{logo_dc.jpg}
+	\caption{Ejemplo de figura}
+	\label{fig:ejemplo}
+\end{figure}
+
+\begin{figure}[ht!]
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=0.9\linewidth]{LaTeX-project} 
+		\caption{Logo de LaTeX}
+		\label{fig:subfig1}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\includegraphics[width=0.7\linewidth]{TeX}
+		\caption{Logo de TeX}
+		\label{fig:subfig2}
+	\end{subfigure}
+	\caption{Ejemplo para poner dos figuras juntas. Y citarlas por separado a (\subref{fig:subfig1}) y (\subref{fig:subfig2}).}
+	% OJO: el caption siempre va antes del label
+	\label{fig:subfigs}
+\end{figure}
+
+
+
+% Para hacer que quede todo en una misma linea, se puede usar minipage
+%\begin{minipage}[t]{\textwidth}
+	\begin{lstlisting}[caption={Ejemplo de código (usando los estilos de la cátedra, ver las macros para más detalles)},label=code:for]
+res := 0;
+i := 0;
+while (i < s.size()) do
+	res := res + s[i];
+	i := i + 1
+endwhile
+	\end{lstlisting}
+%\end{minipage}
+
+Si se pone un label al \verb|lstlisting|, se puede referenciar: Código \ref{code:for}.
+
+
+\subsection{Macros de la cátedra para especificar}
+
+\begin{proc}{nombre}{\In paramIn : \nat, \Inout paramInout : \TLista{\ent}}{tipoRes}
+	%    \modifica{parametro1, parametro2,..}
+	\requiere{expresionBooleana1}
+	\asegura{expresionBooleana2}
+	\aux{auxiliar1}{parametros}{tipoRes}{expresion}
+	\pred{pred1}{parametros}{expresion} 
+\end{proc}
+
+\aux{auxiliarSuelto}{parametros}{tipoRes}{expresion}
+% \paraTodo{variable}{tipo}{expresion}
+% \existe{variable}{tipo}{expresion}
+% Pueden tener [unalinea] para que no se divida en varias lineas
+\pred{predSuelto}{parametros}{\paraTodo[unalinea]{variable}{tipo}{algo \implicaLuego expresion}}
+\pred{predSuelto}{parametros}{\existe[unalinea]{variable}{tipo}{algo \yLuego expresion}}
+
+
+
+\end{document}
